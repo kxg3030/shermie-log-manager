@@ -52,6 +52,8 @@ class LogWatch(object):
             try:
                 fileList: list = []
                 self.ListFile(app["path"], fileList)
+                if len(fileList) <= 0:
+                    continue
                 self.ShowTable(app["name"], fileList)
             except Exception as e:
                 Log.Instance().logger.error("删除{0}日志失败：{1}".format(app["name"], e))
