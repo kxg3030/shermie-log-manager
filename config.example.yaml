@@ -1,0 +1,21 @@
+name:
+  日志清理工具
+# 应用列表
+application:
+  - name: '财务中心'
+    path: 'F:\PhpStudy\WWW\data-center\finance\runtime'
+  - name: '订单中心'
+    path: 'F:\PhpStudy\WWW\data-center\order\runtime'
+  - name: '用户中心'
+    path: 'F:\PhpStudy\WWW\data-center\user\runtime'
+  - name: '商品中心'
+    path: 'F:\PhpStudy\WWW\data-center\goods\runtime'
+# 删除10天前的文件
+deadtime:
+   10
+# 日志后缀
+extension:
+  '.log'
+# 文件大小
+file-size:
+  0
