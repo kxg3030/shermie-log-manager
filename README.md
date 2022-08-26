@@ -3,6 +3,11 @@
 
 #### 使用
 
+- 安装项目
+```
+pip install -r requirements.txt
+```
+
 - 配置文件
 ```yaml
 # 应用列表
