@@ -4,6 +4,7 @@ import time
 import traceback
 
 import yaml
+from rich import box
 from rich.console import Console
 from rich.progress import Progress
 from rich.style import Style
@@ -97,7 +98,7 @@ class LogWatch(object):
     """
 
     def ShowTable(self, appName: str, fileList: list = None):
-        table = Table(title=appName)
+        table = Table(title=appName, box=box.SQUARE)
         table.add_column("文件大小", justify="center", style="cyan", no_wrap=True)
         table.add_column("文件名", style="cyan", justify="center")
         table.add_column("创建时间", justify="center", style="green")
@@ -106,7 +107,10 @@ class LogWatch(object):
         self.console.print(table)
         progress = Progress()
         with progress:
-            for n in progress.track([f.filepath for k, f in enumerate(fileList)], description="进度",
-                                    total=len(fileList)):
+            for n in progress.track([f.filepath for k, f in enumerate(fileList)], description="进度", total=len(fileList)):
+                os.remove(n)
+                basedir = os.path.dirname(n)
+                if len(os.listdir(basedir)) <= 0 :
+                    os.remove(basedir)
                 Log.Instance().logger.info("删除:{0}".format(n))
                 time.sleep(0.1)
