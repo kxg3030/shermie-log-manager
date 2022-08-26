@@ -3,13 +3,13 @@ name:
 # 应用列表
 application:
   - name: '财务中心'
-    path: 'F:finance\runtime'
+    path: 'F:finance\runtime\logs'
   - name: '订单中心'
-    path: 'F:order\runtime'
+    path: 'F:order\runtime\logs'
   - name: '用户中心'
-    path: 'F:user\runtime'
+    path: 'F:user\runtime\logs'
   - name: '商品中心'
-    path: 'F:goods\runtime'
+    path: 'F:goods\runtime\logs'
 # 删除10天前的文件
 deadtime:
    10
