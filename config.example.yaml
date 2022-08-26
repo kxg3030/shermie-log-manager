@@ -3,13 +3,13 @@ name:
 # 应用列表
 application:
   - name: '财务中心'
-    path: 'F:\PhpStudy\WWW\data-center\finance\runtime'
+    path: 'F:finance\runtime'
   - name: '订单中心'
-    path: 'F:\PhpStudy\WWW\data-center\order\runtime'
+    path: 'F:order\runtime'
   - name: '用户中心'
-    path: 'F:\PhpStudy\WWW\data-center\user\runtime'
+    path: 'F:user\runtime'
   - name: '商品中心'
-    path: 'F:\PhpStudy\WWW\data-center\goods\runtime'
+    path: 'F:goods\runtime'
 # 删除10天前的文件
 deadtime:
    10
