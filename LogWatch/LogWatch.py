@@ -107,10 +107,11 @@ class LogWatch(object):
         self.console.print(table)
         progress = Progress()
         with progress:
-            for n in progress.track([f.filepath for k, f in enumerate(fileList)], description="进度", total=len(fileList)):
+            trackList = [f.filepath for k, f in enumerate(fileList)]
+            for n in progress.track(trackList, description="进度", total=len(fileList)):
                 os.remove(n)
-                Log.Instance().logger.info("删除:{0}".format(n))
-                basedir = os.path.dirname(n)
-                if len(os.listdir(basedir)) <= 0 :
-                    os.rmdir(basedir)
+                progress.console.print("删除:{0}".format(n))
                 time.sleep(0.1)
+                basedir = os.path.dirname(n)
+                if len(os.listdir(basedir)) <= 0:
+                    os.rmdir(basedir)
