@@ -16,6 +16,6 @@ deadtime:
 # 日志后缀
 extension:
   '.log'
-# 文件大小
+# 文件大小，单位KB
 file-size:
   0
