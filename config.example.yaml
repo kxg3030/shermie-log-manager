@@ -1,6 +1,6 @@
 name:
   日志清理工具
-# 应用列表
+# 应用日志列表,精确到日志文件的上册目录
 application:
   - name: '财务中心'
     path: 'F:finance\runtime\logs'
