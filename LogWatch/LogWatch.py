@@ -86,7 +86,7 @@ class LogWatch(object):
                 stat = os.stat(fullpath)
                 if stat.st_ctime < self.deadtime:
                     allFileList.append(
-                            LogFileInfo(filepath=fullpath, filesize="{0}KB".format(int(stat.st_size / 1024)),
+                            LogFileInfo(filepath=fullpath, filesize="{:.2f}KB".format(stat.st_size / 1024),
                                         createdAt=time.strftime("%Y-%m-%d %H:%M:%S",
                                                                 time.localtime(int(stat.st_ctime)))
                                         )
