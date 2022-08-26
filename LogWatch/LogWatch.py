@@ -84,11 +84,11 @@ class LogWatch(object):
                 if extension != self.config["extension"]:
                     continue
                 stat = os.stat(fullpath)
-                if stat.st_ctime < self.deadtime:
+                if stat.st_mtime < self.deadtime:
                     allFileList.append(
                             LogFileInfo(filepath=fullpath, filesize="{:.2f}KB".format(stat.st_size / 1024),
                                         createdAt=time.strftime("%Y-%m-%d %H:%M:%S",
-                                                                time.localtime(int(stat.st_ctime)))
+                                                                time.localtime(int(stat.st_mtime)))
                                         )
                     )
         return allFileList
@@ -101,7 +101,7 @@ class LogWatch(object):
         table = Table(title=appName, box=box.SQUARE)
         table.add_column("文件大小", justify="center", style="cyan", no_wrap=True)
         table.add_column("文件名", style="cyan", justify="center")
-        table.add_column("创建时间", justify="center", style="green")
+        table.add_column("修改时间", justify="center", style="green")
         for _, file in enumerate(fileList):
             table.add_row(str(file.filesize), file.filepath, str(file.createdAt), style=Style())
         self.console.print(table)
@@ -109,8 +109,8 @@ class LogWatch(object):
         with progress:
             for n in progress.track([f.filepath for k, f in enumerate(fileList)], description="进度", total=len(fileList)):
                 os.remove(n)
+                Log.Instance().logger.info("删除:{0}".format(n))
                 basedir = os.path.dirname(n)
                 if len(os.listdir(basedir)) <= 0 :
-                    os.remove(basedir)
-                Log.Instance().logger.info("删除:{0}".format(n))
+                    os.rmdir(basedir)
                 time.sleep(0.1)
